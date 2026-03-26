@@ -1,7 +1,7 @@
 ---
 name: factucat-cli
 description: Use this skill when an agent needs to install, update, authenticate, or operate the FactuCat CLI to create Mexican CFDI 4.0 invoice drafts, assign customers or receiver data, add concepts, preview invoices, stamp them, send them through customer contact channels, or download XML/PDF artifacts on factucat.com.
-metadata: {"openclaw":{"emoji":"🧾","homepage":"https://github.com/factucat/ai-skills/tree/main/factucat-cli","skillKey":"factucat-cli","primaryEnv":"FACTUCAT_API_KEY","install":[{"id":"npm","kind":"node","package":"@factucat/cli","bins":["factucat"],"label":"Install FactuCat CLI (npm)"}]}}
+metadata: {"openclaw":{"emoji":"🧾","homepage":"https://github.com/factucat/ai-skills/tree/main/factucat-cli","skillKey":"factucat-cli","primaryEnv":"FACTUCAT_API_KEY","requires":{"bins":["factucat"]},"install":[{"id":"npm","kind":"node","package":"@factucat/cli","bins":["factucat"],"label":"Install FactuCat CLI (npm)"}]}}
 ---
 
 # FactuCat CLI
