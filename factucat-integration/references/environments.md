@@ -32,6 +32,8 @@ JSON mutations also send `Content-Type: application/json`.
 
 When `FACTUCAT_API_SANDBOX` is on, sandbox preloads the shared SAT test CSD **EKU9003173C9**. The account can stamp without uploading a CSD. Do not treat sandbox XML/PDF as fiscally valid.
 
+Emitter CSD alone is not enough: the **receiver** must pass SAT list checks at stamp. For a first demo without a real customer, use público en general (`XAXX010101000`, régimen `616`, `cfdiUse` `S01`) — see [stamp-flow.md](stamp-flow.md). Shape-only RFCs like `AAA010101AAA` fail at stamp.
+
 `GET /me` checks the key and scopes. It does not certify that production fiscal data or a production CSD are ready.
 
 ## Production

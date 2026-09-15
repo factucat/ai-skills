@@ -34,7 +34,24 @@ curl --fail-with-body --max-time 60 --request POST \
   }'
 ```
 
-Save `data.id`. A duplicate RFC in the same account is a conflict: look up that customer and reuse its id. Replace the example receiver with SAT-registered data before a real stamp; the values above are shape-only.
+Save `data.id`. A duplicate RFC in the same account is a conflict: look up that customer and reuse its id.
+
+**Shape-only warning:** `AAA010101AAA` / `EMPRESA DE EJEMPLO` is **not** on the SAT active list. Stamp will return 400 (*RFC del receptor no existe…*). Replace with a real SAT-registered receiver before stamp, or use the sandbox demo receiver below.
+
+### Sandbox first stamp (público en general)
+
+For a demo that must reach `issued` + XML/PDF without a real customer RFC:
+
+1. `POST /invoice-drafts` with `{}` (or omit customer).
+2. `PATCH /invoice-drafts/{id}/receiver` with:
+   - `receiverRfc`: `XAXX010101000`
+   - `receiverLegalName`: `PUBLICO EN GENERAL`
+   - `receiverPostalCode`: issuer postal code (sandbox EKU accounts often use `06600`)
+   - `receiverTaxRegime`: `616`
+3. `PATCH .../meta` with `cfdiUse: "S01"`, `paymentMethod: "PUE"`, `paymentForm: "03"`, `exportacion: "01"`, `currency: "MXN"`.
+4. Continue with items → review → stamp.
+
+`cfdiUse` `S01` pairs with régimen `616`. Do not use `G03` with this receptor.
 
 ## 2. Draft
 

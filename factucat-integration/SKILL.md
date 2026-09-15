@@ -67,6 +67,8 @@ Pago en una sola exhibición: **customer → draft → concepts/meta → review 
 
 Persist the document `id` before stamp. After a successful stamp, `status` is `issued` and `satUuid` is set; read issued docs from `/invoices/{id}`, not `/invoice-drafts/{id}`.
 
+**Sandbox demo tip:** the sample customer RFC in `references/stamp-flow.md` is shape-only and **fails** SAT receiver checks at stamp. For a first sandbox `issued` (XML/PDF), use público en general (`XAXX010101000` / régimen `616` / `cfdiUse` `S01`) as documented there — or a real SAT-registered receiver.
+
 **PPD** (pago en parcialidades o diferido) and payment complements need a different fiscal treatment. The public API does not expose complement issuance. Follow [emitir-factura](https://docs.factucat.com/guias/emitir-factura/).
 
 Full sequence: [references/stamp-flow.md](references/stamp-flow.md)
@@ -104,6 +106,8 @@ Setup: register at https://sandbox.factucat.com (no card) → Configuración →
 Sandbox preloads SAT test CSD EKU9003173C9; you can stamp without uploading a CSD.
 
 PUE flow: POST /customers → POST /invoice-drafts (customerId) → PATCH /invoice-drafts/{id}/meta (paymentMethod PUE) → POST .../items → GET draft → POST .../stamp. Send Idempotency-Key on every mutation. Save the document id before stamp.
+
+For a sandbox demo stamp without a real customer RFC: empty draft → PATCH receiver XAXX010101000 / PUBLICO EN GENERAL / régimen 616 → meta cfdiUse S01 + PUE → items → stamp. Do not stamp with the skill's shape-only AAA010101AAA example.
 
 Docs: https://docs.factucat.com (primeros-pasos, emitir-factura, idempotencia, respuestas, ambientes).
 ```
