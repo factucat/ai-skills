@@ -20,7 +20,7 @@ REST integration for **Mexican CFDI 4.0** on FactuCat Cloud. Use HTTPS JSON agai
 - Send the secret as header `X-API-Key` from the server only (never in the browser, never in query strings)
 - Use Mexican CFDI and SAT terminology
 - Send `Idempotency-Key` on every mutation
-- Before production stamp: `GET /me` and confirm the account has API access. On `plan_required`, surface upgrade to Miau Pro or FactuCat API — do not silent-fail or keep stamping
+- Before production stamp: `GET /me`; on 403 `plan_required` stop. Free/Miau need Miau Pro or FactuCat API via webapp Configuración → Suscripción (`https://factucat.com/settings/subscription` or staging equivalent) → Stripe Checkout (optional promo/coupon when Checkout shows it). No public REST API to upgrade, start Checkout, or apply coupons — do not invent one. Sandbox needs no paid plan. See [facturacion](https://docs.factucat.com/guias/facturacion/)
 - When fiscal details, stamp steps, retries, or errors matter, read the matching file under `references/`
 - Canonical HTTP contract: [docs.factucat.com](https://docs.factucat.com)
 
