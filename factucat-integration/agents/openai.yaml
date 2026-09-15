@@ -1,0 +1,8 @@
+interface:
+  display_name: "FactuCat Integration"
+  short_description: "Integrate FactuCat CFDI REST API"
+  brand_color: "#7F13EC"
+  default_prompt: "Use $factucat-integration to integrate the FactuCat CFDI REST API in sandbox or production, stamp invoices over HTTP, and set up agentic development against FactuCat."
+
+policy:
+  allow_implicit_invocation: true
