@@ -38,6 +38,7 @@ Also read header `X-Request-Id`. Keep that id when investigating.
 | Symptom | What to do |
 | --- | --- |
 | 401 on `/me` | Key, revocation, and URL/prefix pairing ([ambientes](https://docs.factucat.com/guias/ambientes/)) |
+| 403 `plan_required` | Account is Free/Miau (or API subscription inactive). Surface upgrade to Miau Pro / FactuCat API; do not treat as revoked key |
 | 403 `missing_scope` | Recreate the key with the needed scopes |
 | Duplicate customer RFC | `GET /customers?query={rfc}` and reuse `id` |
 | Stamp 400 (receiver, CSD, catalogs, totals) | Fix the same draft; new idempotency key for the corrected call. SAT checks run at stamp, not at `/me` ([emitir-factura](https://docs.factucat.com/guias/emitir-factura/)) |

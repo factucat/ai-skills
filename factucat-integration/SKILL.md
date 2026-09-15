@@ -20,6 +20,7 @@ REST integration for **Mexican CFDI 4.0** on FactuCat Cloud. Use HTTPS JSON agai
 - Send the secret as header `X-API-Key` from the server only (never in the browser, never in query strings)
 - Use Mexican CFDI and SAT terminology
 - Send `Idempotency-Key` on every mutation
+- Before production stamp: `GET /me` and confirm the account has API access. On `plan_required`, surface upgrade to Miau Pro or FactuCat API — do not silent-fail or keep stamping
 - When fiscal details, stamp steps, retries, or errors matter, read the matching file under `references/`
 - Canonical HTTP contract: [docs.factucat.com](https://docs.factucat.com)
 
