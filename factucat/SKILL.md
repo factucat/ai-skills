@@ -1,12 +1,24 @@
 ---
-name: factucat-integration
-description: Use this skill when an agent integrates the FactuCat CFDI API into an app (sandbox or production), stamps invoices via REST, or sets up agentic/vibecoding against FactuCat.
-metadata: {"openclaw":{"emoji":"🧾","homepage":"https://github.com/factucat/ai-skills/tree/main/factucat-integration","skillKey":"factucat-integration","primaryEnv":"FACTUCAT_API_KEY"}}
+name: factucat
+description: Use this skill when an agent uses FactuCat (Mexican CFDI 4.0) via the FactuCat CLI, the FactuCat MCP server, or the REST API — sandbox or production — to read customers/invoices, build drafts, and stamp or cancel CFDI with preview, explicit confirmation and idempotency.
+metadata: {"openclaw":{"emoji":"🧾","homepage":"https://github.com/factucat/ai-skills/tree/main/factucat","skillKey":"factucat","primaryEnv":"FACTUCAT_API_KEY"}}
 ---
 
-# FactuCat Integration
+# FactuCat
 
-REST integration for **Mexican CFDI 4.0** on FactuCat Cloud. Use HTTPS JSON against `/api/v1`. This skill is not the CLI; for terminal workflows use `factucat-cli`.
+Use FactuCat three ways; pick one:
+
+| Channel | Best for | Auth | Details |
+| --- | --- | --- | --- |
+| CLI (`@factucat/cli`, `factucat`) | Terminal, scripts, CI, coding agents | API key | [`factucat-cli`](../factucat-cli/) skill |
+| MCP (`https://mcp.factucat.com/mcp`) | Claude, ChatGPT, Cursor, MCP agents | OAuth 2.1 or API key Bearer | [references/mcp.md](references/mcp.md) |
+| REST (`/api/v1`) | Apps integrating FactuCat | API key | below |
+
+Same rules everywhere: sandbox (`fc_test_`) first, never stamp or cancel without showing a preview and getting an explicit yes, one idempotency key per business operation (retry with the same key).
+
+## REST integration
+
+REST integration for **Mexican CFDI 4.0** on FactuCat Cloud. Use HTTPS JSON against `/api/v1`. For terminal workflows see `factucat-cli`; for MCP see `references/mcp.md`.
 
 ## Use This Skill When
 
@@ -116,13 +128,13 @@ Docs: https://docs.factucat.com (primeros-pasos, emitir-factura, idempotencia, r
 ## Install
 
 ```bash
-npx skills add factucat/ai-skills@factucat-integration
+npx skills add factucat/ai-skills@factucat
 ```
 
-Equivalent: `npx skills add factucat/ai-skills --skill factucat-integration`.
+Equivalent: `npx skills add factucat/ai-skills --skill factucat`.
 
 Without the skills CLI, copy `SKILL.md` plus `references/` into the agent's skills directory, or fetch:
 
 ```
-https://raw.githubusercontent.com/factucat/ai-skills/main/factucat-integration/SKILL.md
+https://raw.githubusercontent.com/factucat/ai-skills/main/factucat/SKILL.md
 ```
