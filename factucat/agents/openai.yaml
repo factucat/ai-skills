@@ -1,0 +1,8 @@
+interface:
+  display_name: "FactuCat"
+  short_description: "Use FactuCat CFDI via CLI, MCP or REST"
+  brand_color: "#7F13EC"
+  default_prompt: "Use $factucat to use FactuCat via CLI, MCP or REST in sandbox or production, stamp invoices over HTTP, and set up agentic development against FactuCat."
+
+policy:
+  allow_implicit_invocation: true
